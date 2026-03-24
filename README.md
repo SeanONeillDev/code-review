@@ -12,11 +12,13 @@ A Claude Code skill that walks you through any codebase out loud. Claude reads t
 - macOS (uses AVSpeechSynthesizer via a compiled Swift helper)
 - [Claude Code](https://claude.ai/code)
 - [uv](https://docs.astral.sh/uv/) — `brew install uv`
+- **Zoe Enhanced voice** — download it for best quality:
+  System Settings → Accessibility → Spoken Content → System Voice → Manage Voices → Zoe → Enhanced
 
 ## Install
 
 ```bash
-git clone https://github.com/seanoliver/claude-code-review ~/.claude/skills/code-review
+git clone https://github.com/SeanONeillDev/code-review ~/.claude/skills/code-review
 ```
 
 Restart Claude Code. That's it.
