@@ -447,6 +447,13 @@ async def websocket_endpoint(ws: WebSocket):
                 await _question_queue.put({"type": "back"})
                 await _broadcast({"type": "qa_mode", "active": False})
 
+            elif t == "repeat":
+                # Kill TTS and replay current section from the start
+                await _stop_tts()
+                _drain_queue()
+                await _question_queue.put({"type": "repeat"})
+                await _broadcast({"type": "qa_mode", "active": False})
+
     except WebSocketDisconnect:
         await _stop_tts()
     finally:
