@@ -411,7 +411,6 @@
       <div id="diagram-title"></div>
       <div id="diagram-subtitle"></div>
       <div id="diagram-content"><div class="mermaid" id="diagram-mermaid"></div></div>
-      <button id="btn-start-tour">Start tour →</button>
     </div>
     <div id="editor"></div>
   </div>
@@ -435,6 +434,7 @@
       <div id="qa-question" style="display:none"></div>
       <div id="speech-nav">
         <button class="nav-btn" id="btn-back">⏮ Back</button>
+        <button class="nav-btn" id="btn-repeat">↺ Repeat</button>
         <button class="nav-btn" id="btn-pause" style="display:none">⏸</button>
         <button class="nav-btn" id="btn-next">⏭ Skip</button>
       </div>
@@ -490,8 +490,6 @@
   function hideDiagram() {
     document.getElementById('diagram-overlay').classList.remove('visible');
   }
-
-  document.getElementById('btn-start-tour').addEventListener('click', hideDiagram);
 
   // ── Monaco setup ──────────────────────────────────────────────────
   require.config({ paths: { vs: 'https://cdn.jsdelivr.net/npm/monaco-editor@0.47.0/min/vs' } });
@@ -880,6 +878,11 @@
   // ── Nav buttons ───────────────────────────────────────────────────
   document.getElementById('btn-back').addEventListener('click', () => {
     sendWS({ type: 'back' });
+  });
+
+  document.getElementById('btn-repeat').addEventListener('click', () => {
+    sendWS({ type: 'repeat' });
+    setQAMode(false);
   });
 
   document.getElementById('btn-pause').addEventListener('click', () => {

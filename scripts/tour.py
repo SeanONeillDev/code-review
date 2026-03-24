@@ -61,6 +61,8 @@ while 0 <= i < total:
         i += 1
     elif result["type"] == "back":
         i = max(0, i - 1)
+    elif result["type"] == "repeat":
+        pass  # replay same section — i unchanged
     elif result["type"] == "question":
         # Hand back to Claude to answer, then Claude will call tour.py again
         print(json.dumps({
